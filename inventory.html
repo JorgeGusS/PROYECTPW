@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventario de Bodega</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        if (localStorage.getItem('loggedIn') !== 'true') {
+            window.location.href = 'login.html';
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Inventario de Bodega</h1>
+        <button id="logout-btn">Cerrar Sesión</button>
+    </header>
+
+    <section id="form-section">
+        <h2>Agregar Nuevo Producto a la Bodega</h2>
+        <form id="product-form">
+            <label for="product-name">Nombre del Producto:</label>
+            <input type="text" id="product-name" placeholder="Ej. Papas Fritas" required><br>
+
+            <label for="product-category">Categoría:</label>
+            <input type="text" id="product-category" placeholder="Ej. Papas" required><br>
+
+            <label for="product-quantity">Cantidad:</label>
+            <input type="number" id="product-quantity" min="1" placeholder="Ej. 100" required><br>
+
+            <label for="product-expiration">Fecha de Vencimiento:</label>
+            <input type="date" id="product-expiration" required><br>
+
+            <!-- Agregar campo de carga de imagen -->
+            <label for="product-image">Imagen del Producto:</label>
+            <input type="file" id="product-image" accept="image/*" required><br>
+
+            <button type="submit">Agregar Producto</button>
+        </form>
+    </section>
+
+    <section id="inventory-section">
+        <h2>Inventario de la Bodega</h2>
+        <table id="inventory-table">
+            <thead>
+                <tr>
+                    <th>Imagen</th>
+                    <th>Producto</th>
+                    <th>Categoría</th>
+                    <th>Cantidad</th>
+                    <th>Vencimiento</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody id="inventory-body">
+                <!-- Aquí se agregará dinámicamente el inventario -->
+            </tbody>
+        </table>
+    </section>
+
+    <script src="inventory.js"></script>
+</body>
+</html>
